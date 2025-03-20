@@ -1,4 +1,3 @@
-/* Reset and base styles */
 * {
     margin: 0;
     padding: 0;
@@ -18,7 +17,6 @@ body {
     padding: 20px;
 }
 
-/* Header styles */
 .header {
     background-color: #fff;
     padding: 20px;
@@ -45,7 +43,6 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Navigation styles */
 .main-nav ul {
     display: flex;
     justify-content: center;
@@ -70,7 +67,6 @@ body {
     transform: scale(1.1);
 }
 
-/* Hero section */
 .hero {
     text-align: center;
     padding: 40px 20px;
@@ -108,7 +104,6 @@ body {
     background-color: #45b7af;
 }
 
-/* Featured pets section */
 .featured-pets {
     text-align: center;
 }
@@ -172,7 +167,6 @@ body {
     font-size: 1.1rem;
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
     .logo h1 {
         font-size: 2rem;
