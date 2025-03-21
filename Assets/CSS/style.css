@@ -167,6 +167,17 @@ body {
     font-size: 1.1rem;
 }
 
+.pet-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.pet-card-link:hover {
+    transform: translateY(-10px);
+}
+
 @media (max-width: 768px) {
     .logo h1 {
         font-size: 2rem;
