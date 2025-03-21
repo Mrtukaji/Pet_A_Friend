@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Pets - Pet.A.Friend</title>
+    <link rel="stylesheet" href="../Assets/CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <h1>Pet-A-Friend</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../Index.html" class="nav-link">Home</a></li>
+                    <li><a href="./pets.html" class="nav-link">Pets</a></li>
+                    <li><a href="./contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="./create_pet.html" class="nav-link">Create</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <main class="main-content">
+            <!-- Featured Pets Section -->
+            <section class="pets-section featured-pets-section">
+                <h2>Featured Pets 🌟</h2>
+                <div class="pet-cards">
+                    <a href="./pets/zeus.html" class="pet-card-link">
+                        <div class="pet-card">
+                            <div class="pet-image">
+                                <img src="../Assets/Images/zeus.jpg" alt="Zeus the cat">
+                            </div>
+                            <h4>Zeus</h4>
+                            <p>Sweet man</p>
+                        </div>
+                    </a>
+                    <a href="./pets/borgy.html" class="pet-card-link">
+                        <div class="pet-card">
+                            <div class="pet-image">
+                                <img src="../Assets/Images/buddy.jpg" alt="Borgy the dog">
+                            </div>
+                            <h4>Borgy</h4>
+                            <p>Friendly man</p>
+                        </div>
+                    </a>
+                    <a href="./pets/hoppy.html" class="pet-card-link">
+                        <div class="pet-card">
+                            <div class="pet-image">
+                                <img src="../Assets/Images/hoppy.jpg" alt="Hoppy the rabbit">
+                            </div>
+                            <h4>Hoppy</h4>
+                            <p>Adorable Rabbit</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- User Created Pets Section -->
+            <section class="pets-section user-pets-section">
+                <h2>Community Pets 🐾</h2>
+                <div class="pet-filters">
+                    <select id="petTypeFilter" class="filter-select" aria-label="Filter pets by type">
+                        <option value="all">All Types</option>
+                        <option value="dog">Dogs</option>
+                        <option value="cat">Cats</option>
+                        <option value="rabbit">Rabbits</option>
+                        <option value="bird">Birds</option>
+                        <option value="other">Others</option>
+                    </select>
+                    <select id="sortFilter" class="filter-select" aria-label="Sort pets by">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="name">Name (A-Z)</option>
+                    </select>
+                </div>
+                <div class="pet-cards" id="userPetsContainer">
+                    <!-- User created pets will be dynamically added here -->
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="../Assets/JS/pets.js"></script>
+</body>
+</html>
