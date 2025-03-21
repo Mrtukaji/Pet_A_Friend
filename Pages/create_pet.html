@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Pet - Pet.A.Friend</title>
+    <link rel="stylesheet" href="../Assets/CSS/create.css">
+    <link rel="stylesheet" href="../Assets/CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <h1>Pet-A-Friend</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../Index.html" class="nav-link">Home</a></li>
+                    <li><a href="./pets.html" class="nav-link">Pets</a></li>
+                    <li><a href="./contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="./create_pet.html" class="nav-link">Create</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <main class="main-content">
+            <section class="create-pet-section">
+                <h2>Create Your Perfect Pet! 🐾</h2>
+                <div class="create-pet-form">
+                    <form id="createPetForm">
+                        <div class="form-group">
+                            <label for="petImage">Pet's Photo</label>
+                            <div class="image-upload-container">
+                                <input type="file" id="petImage" name="petImage" accept="image/*" required>
+                                <div class="image-preview">
+                                    <img id="imagePreview" src="../Assets/Images/placeholder.png" alt="Preview">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="petName">Pet's Name</label>
+                            <input type="text" id="petName" name="petName" placeholder="What's your pet's name?" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="petType">Pet Type</label>
+                            <select id="petType" name="petType" required>
+                                <option value="">Select pet type</option>
+                                <option value="dog">Dog</option>
+                                <option value="cat">Cat</option>
+                                <option value="rabbit">Rabbit</option>
+                                <option value="bird">Bird</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="petAge">Pet's Age</label>
+                            <input type="number" id="petAge" name="petAge" min="0" placeholder="How old is your pet?" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="petDescription">Pet's Description</label>
+                            <textarea id="petDescription" name="petDescription" placeholder="Tell us about your pet's personality and characteristics!" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="petTraits">Pet's Traits</label>
+                            <div class="traits-container">
+                                <label class="trait-checkbox">
+                                    <input type="checkbox" name="traits" value="friendly"> Friendly
+                                </label>
+                                <label class="trait-checkbox">
+                                    <input type="checkbox" name="traits" value="playful"> Playful
+                                </label>
+                                <label class="trait-checkbox">
+                                    <input type="checkbox" name="traits" value="calm"> Calm
+                                </label>
+                                <label class="trait-checkbox">
+                                    <input type="checkbox" name="traits" value="energetic"> Energetic
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="cta-button">Create My Pet!</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="../Assets/JS/create_pet.js"></script>
+</body>
+</html>
