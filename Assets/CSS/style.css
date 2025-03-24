@@ -104,6 +104,10 @@ body {
     font-family: 'Comic Neue', cursive;
 }
 
+.cta-button a {
+    color: white;
+}
+
 .cta-button:hover {
     transform: scale(1.1);
     background-color: #45b7af;
