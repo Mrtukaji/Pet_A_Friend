@@ -83,13 +83,16 @@ body {
 
 .hero h2 {
     color: #ff6b6b;
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 20px;
 }
 
 .hero p {
-    font-size: 2rem;
+    font-size: 1.2rem;
     margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .cta-button {
