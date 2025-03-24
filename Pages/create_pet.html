@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../Assets/CSS/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../Assets/Images/logo/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
@@ -28,65 +29,166 @@
 
         <main class="main-content">
             <section class="create-pet-section">
-                <h2>Create Your Perfect Pet! 🐾</h2>
+                <h2>Create Your virtual Pet! 🐾</h2>
                 <div class="create-pet-form">
                     <form id="createPetForm">
-                        <div class="form-group">
-                            <label for="petImage">Pet's Photo</label>
-                            <div class="image-upload-container">
-                                <input type="file" id="petImage" name="petImage" accept="image/*" required>
-                                <div class="image-preview">
-                                    <img id="imagePreview" src="../Assets/Images/placeholder.png" alt="Preview">
+                        <div class="form-step active" id="step1">
+                            <h3>Step 1: Basic Information</h3>
+                            <div class="form-group">
+                                <label for="petImage">Pet's Photo</label>
+                                <div class="image-upload-container">
+                                    <input type="file" id="petImage" name="petImage" accept="image/*" required>
+                                    <div class="image-preview">
+                                        <img id="imagePreview" src="../Assets/Images/placeholder.png" alt="Preview">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="petName">Pet's Name</label>
+                                <input type="text" id="petName" name="petName" placeholder="What's your pet's name?" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="petType">Pet Type</label>
+                                <select id="petType" name="petType" required>
+                                    <option value="">Select pet type</option>
+                                    <option value="dog">Dog</option>
+                                    <option value="cat">Cat</option>
+                                    <option value="rabbit">Rabbit</option>
+                                    <option value="bird">Bird</option>
+                                    <option value="fish">Fish</option>
+                                    <option value="hamster">Hamster</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="petBreed">Pet's Breed</label>
+                                <input type="text" id="petBreed" name="petBreed" placeholder="What breed is your pet?">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="petAge">Pet's Age</label>
+                                <div class="age-input">
+                                    <input type="number" id="petAge" name="petAge" min="0" placeholder="Age" required>
+                                    <select id="ageUnit" name="ageUnit" required>
+                                        <option value="months">Months</option>
+                                        <option value="years">Years</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="petName">Pet's Name</label>
-                            <input type="text" id="petName" name="petName" placeholder="What's your pet's name?" required>
-                        </div>
+                        <div class="form-step" id="step2">
+                            <h3>Step 2: Personality & Traits</h3>
+                            <div class="form-group">
+                                <label for="petDescription">Pet's Description</label>
+                                <textarea id="petDescription" name="petDescription" placeholder="Tell us about your pet's personality and characteristics!" required></textarea>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="petType">Pet Type</label>
-                            <select id="petType" name="petType" required>
-                                <option value="">Select pet type</option>
-                                <option value="dog">Dog</option>
-                                <option value="cat">Cat</option>
-                                <option value="rabbit">Rabbit</option>
-                                <option value="bird">Bird</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="petAge">Pet's Age</label>
-                            <input type="number" id="petAge" name="petAge" min="0" placeholder="How old is your pet?" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="petDescription">Pet's Description</label>
-                            <textarea id="petDescription" name="petDescription" placeholder="Tell us about your pet's personality and characteristics!" required></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="petTraits">Pet's Traits</label>
-                            <div class="traits-container">
-                                <label class="trait-checkbox">
-                                    <input type="checkbox" name="traits" value="friendly"> Friendly
-                                </label>
-                                <label class="trait-checkbox">
-                                    <input type="checkbox" name="traits" value="playful"> Playful
-                                </label>
-                                <label class="trait-checkbox">
-                                    <input type="checkbox" name="traits" value="calm"> Calm
-                                </label>
-                                <label class="trait-checkbox">
-                                    <input type="checkbox" name="traits" value="energetic"> Energetic
-                                </label>
+                            <div class="form-group">
+                                <label>Pet's Personality Traits</label>
+                                <div class="traits-container">
+                                    <div class="trait-category">
+                                        <h4>Social Traits</h4>
+                                        <label class="trait-checkbox">
+                                            <input type="checkbox" name="traits" value="friendly"> Friendly
+                                        </label>
+                                        <label class="trait-checkbox">
+                                            <input type="checkbox" name="traits" value="shy"> Shy
+                                        </label>
+                                        <label class="trait-checkbox">
+                                            <input type="checkbox" name="traits" value="protective"> Protective
+                                        </label>
+                                    </div>
+                                    <div class="trait-category">
+                                        <h4>Activity Level</h4>
+                                        <label class="trait-checkbox">
+                                            <input type="checkbox" name="traits" value="energetic"> Energetic
+                                        </label>
+                                        <label class="trait-checkbox">
+                                            <input type="checkbox" name="traits" value="calm"> Calm
+                                        </label>
+                                        <label class="trait-checkbox">
+                                            <input type="checkbox" name="traits" value="playful"> Playful
+                                        </label>
+                                    </div>
+                                    <div class="trait-category">
+                                        <h4>Special Skills</h4>
+                                        <label class="trait-checkbox">
+                                            <input type="checkbox" name="traits" value="trained"> Trained
+                                        </label>
+                                        <label class="trait-checkbox">
+                                            <input type="checkbox" name="traits" value="agile"> Agile
+                                        </label>
+                                        <label class="trait-checkbox">
+                                            <input type="checkbox" name="traits" value="intelligent"> Intelligent
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <button type="submit" class="cta-button">Create My Pet!</button>
+                        <div class="form-step" id="step3">
+                            <h3>Step 3: Care & Preferences</h3>
+                            <div class="form-group">
+                                <label>Care Requirements</label>
+                                <div class="care-requirements">
+                                    <div class="care-item">
+                                        <label for="exerciseNeeds">Exercise Needs</label>
+                                        <input type="range" id="exerciseNeeds" name="exerciseNeeds" min="1" max="5" value="3">
+                                        <div class="range-labels">
+                                            <span>Low</span>
+                                            <span>High</span>
+                                        </div>
+                                    </div>
+                                    <div class="care-item">
+                                        <label for="groomingNeeds">Grooming Needs</label>
+                                        <input type="range" id="groomingNeeds" name="groomingNeeds" min="1" max="5" value="3">
+                                        <div class="range-labels">
+                                            <span>Low</span>
+                                            <span>High</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Favorite Activities</label>
+                                <div class="activities-container">
+                                    <label class="activity-checkbox">
+                                        <input type="checkbox" name="activities" value="walking"> Walking
+                                    </label>
+                                    <label class="activity-checkbox">
+                                        <input type="checkbox" name="activities" value="playing"> Playing
+                                    </label>
+                                    <label class="activity-checkbox">
+                                        <input type="checkbox" name="activities" value="swimming"> Swimming
+                                    </label>
+                                    <label class="activity-checkbox">
+                                        <input type="checkbox" name="activities" value="cuddling"> Cuddling
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="specialNotes">Special Notes</label>
+                                <textarea id="specialNotes" name="specialNotes" placeholder="Any special care instructions or preferences?"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-navigation">
+                            <button type="button" class="nav-button prev" id="prevButton" style="display: none;">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button type="button" class="nav-button next" id="nextButton">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <button type="submit" class="submit-button" id="submitButton" style="display: none;">
+                                Create My Pet! <i class="fas fa-paw"></i>
+                            </button>
+                        </div>
                     </form>
                 </div>
             </section>
