@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Pets - Pet.A.Friend</title>
     <link rel="stylesheet" href="../Assets/CSS/style.css">
+    <link rel="stylesheet" href="../Assets/CSS/pets.css">
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../Assets/Images/logo/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
@@ -26,9 +28,27 @@
         </div>
 
         <main class="main-content">
+            <!-- My Pets Section -->
+            <section class="pets-section my-pets-section">
+                <div class="section-header">
+                    <h2>My Pets <i class="fas fa-heart"></i></h2>
+                    <a href="./create_pet.html" class="create-pet-button">
+                        <i class="fas fa-plus"></i> Create New Pet
+                    </a>
+                </div>
+                <div class="pet-cards" id="myPetsContainer">
+                    <!-- My created pets will be dynamically added here -->
+                    <div class="no-pets-message" id="noPetsMessage">
+                        <i class="fas fa-paw"></i>
+                        <p>You haven't created any pets yet!</p>
+                        <a href="./create_pet.html" class="cta-button">Create Your First Pet</a>
+                    </div>
+                </div>
+            </section>
+
             <!-- Featured Pets Section -->
             <section class="pets-section featured-pets-section">
-                <h2>Featured Pets 🌟</h2>
+                <h2>Featured Pets <i class="fas fa-star"></i></h2>
                 <div class="pet-cards">
                     <a href="./pets/zeus.html" class="pet-card-link">
                         <div class="pet-card">
@@ -60,8 +80,9 @@
                 </div>
             </section>
 
-            <section class="pets-section user-pets-section">
-                <h2>Community Pets 🐾</h2>
+            <!-- Community Pets Section -->
+            <section class="pets-section community-pets-section">
+                <h2>Community Pets <i class="fas fa-users"></i></h2>
                 <div class="pet-filters">
                     <select id="petTypeFilter" class="filter-select" aria-label="Filter pets by type">
                         <option value="all">All Types</option>
@@ -77,8 +98,8 @@
                         <option value="name">Name (A-Z)</option>
                     </select>
                 </div>
-                <div class="pet-cards" id="userPetsContainer">
-                    <!-- User created pets will be dynamically added here -->
+                <div class="pet-cards" id="communityPetsContainer">
+                    <!-- Community pets will be dynamically added here -->
                 </div>
             </section>
         </main>
