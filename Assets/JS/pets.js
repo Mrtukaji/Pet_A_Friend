@@ -1,84 +1,117 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Sample user-created pets data (in a real app, this would come from a server)
-    const userPets = [
-        {
-            id: 1,
-            name: "Luna",
-            type: "cat",
-            description: "Playful and curious",
-            image: "../Assets/Images/zeus.jpg",
-            age: 2,
-            traits: ["friendly", "playful"],
-            createdAt: "2024-03-20"
-        },
-        {
-            id: 2,
-            name: "Max",
-            type: "dog",
-            description: "Loyal and energetic",
-            image: "../Assets/Images/buddy.jpg",
-            age: 3,
-            traits: ["friendly", "energetic"],
-            createdAt: "2024-03-19"
-        }
-        // Add more pets as needed
-    ];
-
-    const userPetsContainer = document.getElementById('userPetsContainer');
+    // Get DOM elements
+    const myPetsContainer = document.getElementById('myPetsContainer');
+    const noPetsMessage = document.getElementById('noPetsMessage');
+    const communityPetsContainer = document.getElementById('communityPetsContainer');
     const petTypeFilter = document.getElementById('petTypeFilter');
     const sortFilter = document.getElementById('sortFilter');
 
-    // Function to create a pet card
-    function createPetCard(pet) {
-        return `
-            <a href="./pets/${pet.id}.html" class="pet-card-link">
-                <div class="pet-card">
-                    <div class="pet-image">
-                        <img src="${pet.image}" alt="${pet.name}">
-                    </div>
-                    <h4>${pet.name}</h4>
-                    <p>${pet.description}</p>
-                    <div class="pet-details">
-                        <span class="pet-type">${pet.type}</span>
-                        <span class="pet-age">${pet.age} years</span>
-                    </div>
-                </div>
-            </a>
-        `;
+    // Load pets from localStorage
+    function loadMyPets() {
+        const myPets = JSON.parse(localStorage.getItem('myPets')) || [];
+        
+        if (myPets.length === 0) {
+            noPetsMessage.style.display = 'block';
+            return;
+        }
+
+        noPetsMessage.style.display = 'none';
+        myPetsContainer.innerHTML = '';
+
+        myPets.forEach(pet => {
+            const petCard = createPetCard(pet, true);
+            myPetsContainer.appendChild(petCard);
+        });
     }
 
-    // Function to filter and sort pets
-    function updatePetDisplay() {
-        let filteredPets = [...userPets];
+    // Create a pet card element
+    function createPetCard(pet, isMyPet = false) {
+        const card = document.createElement('div');
+        card.className = 'pet-card';
         
-        // Filter by type
-        const selectedType = petTypeFilter.value;
-        if (selectedType !== 'all') {
-            filteredPets = filteredPets.filter(pet => pet.type === selectedType);
+        const link = document.createElement('a');
+        link.href = `./pets/${pet.id}.html`;
+        link.className = 'pet-card-link';
+
+        const imageDiv = document.createElement('div');
+        imageDiv.className = 'pet-image';
+        
+        const img = document.createElement('img');
+        img.src = pet.image;
+        img.alt = `${pet.name} the ${pet.type}`;
+        
+        const title = document.createElement('h4');
+        title.textContent = pet.name;
+        
+        const description = document.createElement('p');
+        description.textContent = `${pet.type} • ${pet.age} ${pet.ageUnit}`;
+
+        imageDiv.appendChild(img);
+        link.appendChild(imageDiv);
+        link.appendChild(title);
+        link.appendChild(description);
+        card.appendChild(link);
+
+        return card;
+    }
+
+    // Filter and sort pets
+    function filterAndSortPets(pets, typeFilter, sortBy) {
+        let filteredPets = [...pets];
+
+        // Apply type filter
+        if (typeFilter !== 'all') {
+            filteredPets = filteredPets.filter(pet => pet.type === typeFilter);
         }
-        
-        // Sort pets
-        const sortBy = sortFilter.value;
-        switch(sortBy) {
+
+        // Apply sorting
+        switch (sortBy) {
             case 'newest':
-                filteredPets.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                filteredPets.sort((a, b) => b.createdAt - a.createdAt);
                 break;
             case 'oldest':
-                filteredPets.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+                filteredPets.sort((a, b) => a.createdAt - b.createdAt);
                 break;
             case 'name':
                 filteredPets.sort((a, b) => a.name.localeCompare(b.name));
                 break;
         }
-        
-        // Update display
-        userPetsContainer.innerHTML = filteredPets.map(createPetCard).join('');
+
+        return filteredPets;
     }
 
-    // Add event listeners for filters
-    petTypeFilter.addEventListener('change', updatePetDisplay);
-    sortFilter.addEventListener('change', updatePetDisplay);
+    // Update community pets display
+    function updateCommunityPets() {
+        const typeFilter = petTypeFilter.value;
+        const sortBy = sortFilter.value;
+        
+        // Get community pets from localStorage (for demo purposes)
+        const communityPets = JSON.parse(localStorage.getItem('communityPets')) || [];
+        const filteredPets = filterAndSortPets(communityPets, typeFilter, sortBy);
+        
+        communityPetsContainer.innerHTML = '';
+        
+        if (filteredPets.length === 0) {
+            communityPetsContainer.innerHTML = `
+                <div class="no-pets-message">
+                    <i class="fas fa-search"></i>
+                    <p>No pets found matching your criteria</p>
+                </div>
+            `;
+            return;
+        }
 
-    // Initial display
-    updatePetDisplay();
+        filteredPets.forEach(pet => {
+            const petCard = createPetCard(pet);
+            communityPetsContainer.appendChild(petCard);
+        });
+    }
+
+    // Event listeners
+    petTypeFilter.addEventListener('change', updateCommunityPets);
+    sortFilter.addEventListener('change', updateCommunityPets);
+
+    // Initial load
+    loadMyPets();
+    updateCommunityPets();
 }); 
